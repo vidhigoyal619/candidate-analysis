@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Candidate Details – Wireframe</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#panel-area">Skip to candidate details</a>
+
+<!-- Icon sprite (decorative; every use is aria-hidden) -->
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-feedback" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/><path d="M12 8v5M9.5 10.5h5"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4z"/><path d="M10 21h4"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18a6.5 6.5 0 0 1 11 0"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4"/><path d="M15 8l4 4-4 4M19 12H9"/></symbol>
+  <symbol id="i-chevron-r" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-chevron-d" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-id" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M6 16a3 3 0 0 1 6 0M14 10h4M14 14h4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></symbol>
+</svg>
+
+<div class="shell">
+
+  <!-- 1. MAIN NAVIGATION RAIL (collapsible) -->
+  <nav class="rail" id="rail" aria-label="Main navigation" data-open="false">
+    <div class="rail-group">
+      <div class="rail-brand">
+        <span class="logo" aria-hidden="true">PP</span>
+        <span class="rail-label brand-name">People Possible</span>
+      </div>
+      <button type="button" class="rail-btn rail-toggle" id="rail-toggle" aria-expanded="false" aria-label="Expand main navigation">
+        <span class="rail-label">Collapse</span><svg class="i rail-chevron"><use href="#i-chevron-r"/></svg>
+      </button>
+      <hr class="rail-rule">
+      <button type="button" class="rail-btn" aria-label="Dashboard" title="Dashboard">
+        <svg class="i"><use href="#i-grid"/></svg><span class="rail-label">Dashboard</span>
+      </button>
+      <button type="button" class="rail-btn" aria-label="Links" title="Links">
+        <svg class="i"><use href="#i-link"/></svg><span class="rail-label">Links</span>
+      </button>
+    </div>
+    <div class="rail-group">
+      <button type="button" class="rail-btn" aria-label="My profile" title="My profile">
+        <svg class="i"><use href="#i-user"/></svg><span class="rail-label">My profile</span>
+      </button>
+      <button type="button" class="rail-btn rail-btn--danger" aria-label="Log out" title="Log out">
+        <svg class="i"><use href="#i-logout"/></svg><span class="rail-label">Log out</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 2. APP BAR -->
+    <header class="appbar">
+      <p class="appbar-title">Candidate Details</p>
+      <div class="appbar-tools">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="i"><use href="#i-sun"/></svg>
+        </button>
+        <button type="button" class="icon-btn" aria-label="Send feedback about this page">
+          <svg class="i"><use href="#i-feedback"/></svg>
+        </button>
+        <button type="button" class="icon-btn icon-btn--round" aria-label="Notifications">
+          <svg class="i"><use href="#i-bell"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="page" id="top">
+
+      <button type="button" class="back">
+        <svg class="i"><use href="#i-back"/></svg>Back
+      </button>
+
+      <!-- 3. CANDIDATE HEADER CARD: who · what to do · key facts -->
+      <section class="profile" id="profile" aria-labelledby="cand-name">
+        <div class="profile-top">
+
+          <div class="identity">
+            <h1 id="cand-name">Pranshu Sharma</h1>
+            <p class="role">Applying for <strong>Backend Engineer</strong></p>
+            <ul class="contact">
+              <li><svg class="i i-sm"><use href="#i-pin"/></svg>Ahmedabad, India</li>
+              <li><svg class="i i-sm"><use href="#i-mail"/></svg><a href="mailto:pranshusharma0201@gmail.com">pranshusharma0201@gmail.com</a></li>
+              <li><svg class="i i-sm"><use href="#i-phone"/></svg><a href="tel:+917984611076">+91 79846 11076</a></li>
+            </ul>
+          </div>
+
+          <div class="controls">
+            <div class="dd">
+              <button type="button" class="btn btn-quiet" data-dd="menu-ids" aria-haspopup="true" aria-expanded="false" aria-controls="menu-ids">
+                <svg class="i i-sm"><use href="#i-id"/></svg>IDs<svg class="i i-sm"><use href="#i-chevron-d"/></svg>
+              </button>
+              <div class="menu" id="menu-ids" role="group" aria-label="Identifiers" hidden>
+                <dl class="ids">
+                  <div><dt>Candidate ID</dt><dd class="ph">[Candidate ID]</dd></div>
+                  <div><dt>Application ID</dt><dd class="ph">[Application ID]</dd></div>
+                  <div><dt>Job ID</dt><dd class="ph">[Job ID]</dd></div>
+                </dl>
+              </div>
+            </div>
+
+            <div class="dd">
+              <button type="button" class="btn btn-outline" data-dd="menu-actions" aria-haspopup="true" aria-expanded="false" aria-controls="menu-actions">
+                Actions<svg class="i i-sm"><use href="#i-chevron-d"/></svg>
+              </button>
+              <ul class="menu" id="menu-actions" aria-label="Actions" hidden>
+                <li><button type="button" class="menu-item ph" data-menu-item>[Action 1]</button></li>
+                <li><button type="button" class="menu-item ph" data-menu-item>[Action 2]</button></li>
+                <li><button type="button" class="menu-item ph" data-menu-item>[Action 3]</button></li>
+              </ul>
+            </div>
+
+            <div class="dd">
+              <button type="button" class="btn btn-primary" data-dd="menu-status" aria-haspopup="true" aria-expanded="false" aria-controls="menu-status">
+                <span class="btn-sub">Status:</span> Applied<svg class="i i-sm"><use href="#i-chevron-d"/></svg>
+              </button>
+              <ul class="menu" id="menu-status" aria-label="Status" hidden>
+                <li><button type="button" class="menu-item is-current" aria-current="true" data-menu-item><span>Applied</span><svg class="i i-sm"><use href="#i-check"/></svg></button></li>
+                <li><button type="button" class="menu-item ph" data-menu-item>[Status 2]</button></li>
+                <li><button type="button" class="menu-item ph" data-menu-item>[Status 3]</button></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <dl class="facts" aria-label="Candidate at a glance">
+          <div class="fact"><dt>Total experience</dt><dd>12.3 years</dd></div>
+          <div class="fact"><dt>Relevant experience</dt><dd class="ph">[value]</dd></div>
+          <div class="fact"><dt>Notice period</dt><dd class="ph">[value]</dd></div>
+          <div class="fact"><dt>Current CTC</dt><dd class="ph">[amount]</dd></div>
+          <div class="fact"><dt>Expected CTC</dt><dd class="ph">[amount]</dd></div>
+        </dl>
+      </section>
+
+      <!-- 4. STICKY TAB BAR (compact identity appears once the header card scrolls away) -->
+      <div class="tabbar" id="tabbar">
+        <div class="tabbar-id" aria-hidden="true">
+          <strong>Pranshu Sharma</strong><span>Backend Engineer</span>
+        </div>
+        <nav class="tabs" aria-label="Candidate pages">
+          <a href="#" aria-current="page">Candidate Details</a>
+          <a href="#">Notes</a>
+          <a href="#">AI Overview</a>
+          <a href="#">Suitable Jobs</a>
+          <a href="#">Interview Question Generator</a>
+          <a href="#">Feedback</a>
+        </nav>
+      </div>
+
+      <!-- 5. WORKSPACE: sticky section list + one panel at a time -->
+      <div class="workspace" id="panel-area">
+
+        <nav class="sections" aria-label="Candidate details sections">
+          <p class="sections-title">Sections</p>
+          <button type="button" class="sec-btn" data-target="skills" aria-current="true"><span>Skills &amp; Languages</span></button>
+          <button type="button" class="sec-btn" data-target="experience" aria-current="false"><span>Experience</span><span class="count">7</span></button>
+          <button type="button" class="sec-btn" data-target="education" aria-current="false"><span>Education</span><span class="count">3</span></button>
+          <button type="button" class="sec-btn" data-target="gaps" aria-current="false"><span>Employment Gaps</span><span class="count count--warn">2</span></button>
+          <button type="button" class="sec-btn" data-target="awards" aria-current="false"><span>Awards</span></button>
+          <button type="button" class="sec-btn" data-target="military" aria-current="false"><span>Military Service</span></button>
+          <button type="button" class="sec-btn" data-target="interests" aria-current="false"><span>Interests/Hobbies</span></button>
+        </nav>
+
+        <div class="panels">
+
+          <!-- Skills & Languages -->
+          <section class="panel" id="panel-skills" aria-labelledby="h-skills">
+            <h2 id="h-skills" tabindex="-1">Skills &amp; Languages</h2>
+            <div class="block">
+              <h3>Skills</h3>
+              <ul class="chips">
+                <li>SAAS and automation tools</li>
+                <li>CRM platforms: HubSpot, Microsoft Dynamics</li>
+                <li>Lead generation tools: Apollo.io, Snov.io</li>
+                <li>Analytics tools: Google Analytics</li>
+              </ul>
+            </div>
+            <div class="block">
+              <h3>Languages</h3>
+              <ul class="chips chips--plain">
+                <li><strong>English</strong> <span class="muted">· Beginner</span></li>
+                <li><strong>Hindi</strong></li>
+                <li><strong>Punjabi</strong></li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Experience -->
+          <section class="panel" id="panel-experience" aria-labelledby="h-experience" hidden>
+            <div class="panel-head">
+              <h2 id="h-experience" tabindex="-1">Experience</h2>
+              <p class="muted">7 roles · newest first</p>
+            </div>
+            <ol class="rows">
+              <li class="row">
+                <div class="row-when"><strong>Sep 2023 – Present</strong><span>3 yrs 2 mos</span></div>
+                <div class="row-what">
+                  <h3>Vice President of Sales</h3>
+                  <p class="org">Capermint Technologies Pvt. Ltd. · Ahmedabad</p>
+                  <p>Led a high-performing sales team, exceeding revenue goals in key industries such as gaming and IT staffing. Established and nurtured strategic partnerships to enhance market presence and unlock…</p>
+                </div>
+              </li>
+              <li class="row">
+                <div class="row-when"><strong>Jun 2022 – Jun 2023</strong><span>1 yr</span></div>
+                <div class="row-what">
+                  <h3>Sales Lead</h3>
+                  <p class="org">Galaxy Weblinks · Remote</p>
+                  <p>Achieved a 25% improvement in lead conversion rates through targeted outreach and strategic campaigns. Managed a Europe-wide talent pool, strengthening the company’s foothold in global IT markets.</p>
+                </div>
+              </li>
+              <li class="row">
+                <div class="row-when"><strong>Mar 2020 – Apr 2021</strong><span>1 yr 1 mo</span></div>
+                <div class="row-what">
+                  <h3>Head of Sales</h3>
+                  <p class="org">Prompt Softech · Remote</p>
+                  <p>Increased client acquisition by 22% through innovative strategies and data-driven marketing.</p>
+                </div>
+              </li>
+              <li class="row">
+                <div class="row-when"><strong>Jun 2017 – Jan 2020</strong><span>2 yrs 7 mos</span></div>
+                <div class="row-what">
+                  <h3>Senior Business Development Manager</h3>
+                  <p class="org">Thinkonic Technologies · Ahmedabad</p>
+                  <p>Drove international sales efforts, securing long-term contracts in key global markets.</p>
+                </div>
+              </li>
+              <li class="row">
+                <div class="row-when"><strong>May 2016 – May 2017</strong><span>1 yr</span></div>
+                <div class="row-what">
+                  <h3>Senior Business Development Manager</h3>
+                  <p class="org">Crest Infosystem Pvt. Ltd. · Surat</p>
+                  <p>Spearheaded business development strategies, leading to multimillion-dollar deal closures and enhanced market penetration.</p>
+                </div>
+              </li>
+              <li class="row">
+                <div class="row-when"><strong>Apr 2015 – Apr 2016</strong><span>1 yr</span></div>
+                <div class="row-what">
+                  <h3>Business Development Manager</h3>
+                  <p class="org">WaferWire Cloud Technologies · Surat</p>
+                  <p>Developed growth strategies that balanced customer satisfaction with financial goals, achieving significant revenue growth.</p>
+                </div>
+              </li>
+              <li class="row">
+                <div class="row-when"><strong>Sep 2012 – Feb 2015</strong><span>2 yrs 5 mos</span></div>
+                <div class="row-what">
+                  <h3>Business Development Manager</h3>
+                  <p class="org">CovetUS LLC · Indore</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Education -->
+          <section class="panel" id="panel-education" aria-labelledby="h-education" hidden>
+            <h2 id="h-education" tabindex="-1">Education</h2>
+            <ol class="rows">
+              <li class="row">
+                <div class="row-when"><strong>2011</strong></div>
+                <div class="row-what">
+                  <h3>MBA (Marketing)</h3>
+                  <p class="org">NIILM Business School, Bengaluru</p>
+                  <p>Marketing</p>
+                </div>
+              </li>
+              <li class="row">
+                <div class="row-when"><strong>2011</strong></div>
+                <div class="row-what">
+                  <h3>PGPBA (Retail)</h3>
+                  <p class="org">NIILM Business School, Bengaluru</p>
+                  <p>Retail</p>
+                </div>
+              </li>
+              <li class="row">
+                <div class="row-when"><strong>2009</strong></div>
+                <div class="row-what">
+                  <h3>B.Com (Computer Applications)</h3>
+                  <p class="org">Devi Ahilya Vishwavidyalaya, Indore</p>
+                  <p>Computer Applications</p>
+                </div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- Employment Gaps -->
+          <section class="panel" id="panel-gaps" aria-labelledby="h-gaps" hidden>
+            <div class="panel-head">
+              <h2 id="h-gaps" tabindex="-1">Employment Gaps</h2>
+              <p class="pill pill--warn">Total: 15 months</p>
+            </div>
+            <ul class="gap-list">
+              <li class="gap">
+                <div class="gap-between">
+                  <p class="eyebrow">Gap 1</p>
+                  <p class="gap-route"><span>Head of Sales at Prompt Softech</span><span aria-label="to">→</span><span>Sales Lead at Galaxy Weblinks</span></p>
+                </div>
+                <dl class="gap-facts">
+                  <div><dt>Gap Start</dt><dd>May 2021</dd></div>
+                  <div><dt>Gap End</dt><dd>May 2022</dd></div>
+                  <div><dt>Duration</dt><dd>13 months</dd></div>
+                </dl>
+              </li>
+              <li class="gap">
+                <div class="gap-between">
+                  <p class="eyebrow">Gap 2</p>
+                  <p class="gap-route"><span>Sales Lead at Galaxy Weblinks</span><span aria-label="to">→</span><span>Vice President of Sales at Capermint Technologies Pvt. Ltd.</span></p>
+                </div>
+                <dl class="gap-facts">
+                  <div><dt>Gap Start</dt><dd>Jul 2023</dd></div>
+                  <div><dt>Gap End</dt><dd>Aug 2023</dd></div>
+                  <div><dt>Duration</dt><dd>2 months</dd></div>
+                </dl>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Awards -->
+          <section class="panel" id="panel-awards" aria-labelledby="h-awards" hidden>
+            <h2 id="h-awards" tabindex="-1">Awards</h2>
+            <ul class="rows rows--plain">
+              <li class="row row--single">
+                <div class="row-what">
+                  <h3 class="ph">[Award title]</h3>
+                  <p>Recognized for top performance in state and national-level quiz events</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Military Service -->
+          <section class="panel" id="panel-military" aria-labelledby="h-military" hidden>
+            <h2 id="h-military" tabindex="-1">Military Service</h2>
+            <ul class="rows rows--plain">
+              <li class="row row--single">
+                <div class="row-what">
+                  <h3>National Cadet Corps (N.C.C) Certificate Level ‘A’</h3>
+                  <p>Completed advanced training and certification through the National Cadet Corps, India</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Interests/Hobbies -->
+          <section class="panel" id="panel-interests" aria-labelledby="h-interests" hidden>
+            <h2 id="h-interests" tabindex="-1">Interests/Hobbies</h2>
+            <ul class="cards">
+              <li class="card">
+                <h3>Netball</h3>
+                <p>Represented state in Senior National Netball Tournament on four occasions</p>
+              </li>
+              <li class="card">
+                <h3>Basketball</h3>
+                <p>Senior State Player and participant in National Basketball Academy</p>
+              </li>
+            </ul>
+          </section>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
